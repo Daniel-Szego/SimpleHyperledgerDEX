@@ -66,7 +66,10 @@ transaction ClearData {
 }
 
 transaction CreateAndPlaceOrder {
-
+    --> DEX dex 
+    o Double amount
+    o String assetType
+    o Boolean buyOrSell
 }
 
 transaction PlaceOrder {
@@ -87,4 +90,7 @@ event MatchingEvent {
   --> Order[] orders
   --> DEX dex
 }
+
+
+
 
