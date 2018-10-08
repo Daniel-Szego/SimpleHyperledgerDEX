@@ -12,6 +12,10 @@
  * limitations under the License.
  */
 
+/**
+ * Simple decentralized exchange protocol
+ */
+
 namespace org.simpledex
 
 /**
@@ -23,7 +27,6 @@ enum OrderStatus {
   o OFFERED
   o CLOSED
 }
-
 
 abstract asset AssetAncestor identified by assetId {
   o String assetId
@@ -40,7 +43,6 @@ abstract asset OrderAncestor identified by orderId {
 asset Order extends OrderAncestor { 
 }
 
-
 /**
  * PARTICIPANTS
  */
@@ -56,6 +58,16 @@ participant DEX extends DEXAncestor {
 /**
  * TRANSACTIONS
  */
+
+transaction CreateDEX {  
+}
+
+transaction ClearData {
+}
+
+transaction CreateAndPlaceOrder {
+
+}
 
 transaction PlaceOrder {
   --> Order order
@@ -75,3 +87,4 @@ event MatchingEvent {
   --> Order[] orders
   --> DEX dex
 }
+
