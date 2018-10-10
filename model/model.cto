@@ -34,7 +34,7 @@ abstract asset AssetAncestor identified by assetId {
 
 abstract asset OrderAncestor identified by orderId {
   o String orderId
-  o Double amount
+  o Double price
   o String assetType
   o Boolean buyOrSell 
   o OrderStatus orderStatus
@@ -48,7 +48,7 @@ asset Order extends OrderAncestor {
  */
 
 abstract participant DEXAncestor identified by dexId {
-  o String dexId
+  o String dexId default = "1"
   --> Order[] orderBook
 }
 
@@ -67,7 +67,7 @@ transaction ClearData {
 
 transaction CreateAndPlaceOrder {
     --> DEX dex 
-    o Double amount
+    o Double price
     o String assetType
     o Boolean buyOrSell
 }
@@ -77,6 +77,10 @@ transaction PlaceOrder {
   --> DEX dex 
 }
 
+transaction Match {
+  --> DEX dex
+}  
+  
 /**
  * EVENTS
  */
@@ -89,6 +93,7 @@ event OrderPlacedEvent {
 event MatchingEvent {
   --> Order[] orders
   --> DEX dex
+  o Double price
 }
 
 
