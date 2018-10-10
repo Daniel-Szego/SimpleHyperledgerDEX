@@ -16,7 +16,7 @@ async function CreateDEXFunction(param) {
     const dexReg = await getParticipantRegistry(namespace + '.DEX');   
 
     const dex = await factory.newResource(namespace, 'DEX', "1");
-    dex.orders = new Array();
+    dex.orderBook = new Array();
     await dexReg.add(dex);         
 }
 
@@ -87,10 +87,33 @@ async function CreateAndPlaceOrderFunction(param) {
 
 
 // Internal functions
+// Placing order internally
 async function PlaceOrderFunction (dex, order) {
-	
-  
+    const dexReg = await getAssetRegistry(namespace + '.DEX'); 		  
+  	dex.orderBook.push(order);
+    dexReg.update(dex);	
+    await MatchingFunction(dex);
 }
+
+// matching oorder function of the decentralized exchange
+async function MatchingFunction (dex) {
+	console.log('start matching');
+	
+  	for(i=0; i < dex.orderBook.length; i++) {
+  		let actualOrder = orderBook[i];
+	  	console.log(actualOrder.orderId);
+      	
+      	
+        
+        
+    }
+  
+
+  	console.log('end matching');
+}
+
+
+
 
 
 

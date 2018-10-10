@@ -49,7 +49,7 @@ asset Order extends OrderAncestor {
 
 abstract participant DEXAncestor identified by dexId {
   o String dexId
-  --> Order[] orders
+  --> Order[] orderBook
 }
 
 participant DEX extends DEXAncestor {
