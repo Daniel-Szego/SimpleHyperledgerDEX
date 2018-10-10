@@ -115,7 +115,7 @@ async function MatchingFunction (param) {
                 	// matching asset type 
                   	if (dex.orderBook[i].assetType == dex.orderBook[j].assetType) {       
                         // matching amount
-	                  	if (dex.orderBook[i].price == dex.orderBook[j].price) {
+	                  	if (dex.orderBook[i].price >= dex.orderBook[j].price) {
                           	console.log('matching');
                          	//	creating matching event
                           	let matchingEvent = factory.newEvent(namespace, 'MatchingEvent');
@@ -148,12 +148,4 @@ async function MatchingFunction (param) {
 
   	console.log('end matching');
 }
-
-
-
-
-
-
-
-
 
