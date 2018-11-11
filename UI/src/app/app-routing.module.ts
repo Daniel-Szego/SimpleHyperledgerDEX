@@ -1,0 +1,47 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { HomeComponent } from './home/home.component';
+
+import { OrderComponent } from './Order/Order.component';
+
+import { DEXComponent } from './DEX/DEX.component';
+
+import { CreateDEXComponent } from './CreateDEX/CreateDEX.component';
+import { ClearDataComponent } from './ClearData/ClearData.component';
+import { CreateAndPlaceOrderComponent } from './CreateAndPlaceOrder/CreateAndPlaceOrder.component';
+import { PlaceOrderComponent } from './PlaceOrder/PlaceOrder.component';
+import { MatchComponent } from './Match/Match.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'Order', component: OrderComponent },
+  { path: 'DEX', component: DEXComponent },
+  { path: 'CreateDEX', component: CreateDEXComponent },
+  { path: 'ClearData', component: ClearDataComponent },
+  { path: 'CreateAndPlaceOrder', component: CreateAndPlaceOrderComponent },
+  { path: 'PlaceOrder', component: PlaceOrderComponent },
+  { path: 'Match', component: MatchComponent },
+  { path: '**', redirectTo: '' }
+];
+
+@NgModule({
+ imports: [RouterModule.forRoot(routes)],
+ exports: [RouterModule],
+ providers: []
+})
+export class AppRoutingModule { }

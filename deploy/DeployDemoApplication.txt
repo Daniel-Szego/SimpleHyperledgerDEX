@@ -1,0 +1,50 @@
+# deploying the greensupplychain application
+
+# start hyperledger fabric 
+
+./startFabric.sh
+
+# deploy stuff
+
+composer network install --card PeerAdmin@hlfv1 --archiveFile simpledex@0.0.1.bna
+
+# getting deployed full stuff name and version
+
+composer archive list -a simpledex@0.0.1.bna
+
+# start business network 
+
+composer network start --networkName simpledex --networkVersion 0.0.2-deploy.39 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
+
+# import network card identity
+
+composer card import --file networkadmin.card
+
+# test if stuffs are cool
+
+composer network ping --card admin@simpledex
+
+# rest server
+
+composer-rest-server
+
+(card name admin@simpledex, no namespace, yes test interface, yes event publication, no for the rest)
+
+# browser test 
+http://localhost:3000/explorer
+
+# create angular skeleton
+
+yo hyperledger-composer:angular
+
+(card: admin@simpledex, existing API, no namespace)
+
+# starting the network
+
+npm start
+
+# browser test 
+
+http://localhost:4200
+
+
